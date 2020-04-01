@@ -16,6 +16,7 @@ public class DynamicProgramming
      */
     public boolean fillOrderDynProg( int orderSize, int S[] )
     {
+        boolean output = false;
         if (orderSize == 0) return true;
 
         // if solutions array S[] already stores the answer, avoid the
@@ -27,19 +28,26 @@ public class DynamicProgramming
         else{
             // And otherwise, do the recursive work of finding the answer below
             if (orderSize >= 6) { 
-                if ( S[orderSize - 6] == -1 ) 
-                    return fillOrderDynProg( orderSize - 6 , S );
+                if ( S[orderSize - 6] == -1 )
+                    output = fillOrderDynProg( orderSize - 6 , S );
+                    if(output) S[orderSize - 6] = 1;
+                    else S[orderSize - 6] = 0;
             }
             if (orderSize >= 9) {
                 if ( S[orderSize - 9] == -1  ) 
-                    return fillOrderDynProg( orderSize - 9 , S );
+                    output = fillOrderDynProg( orderSize - 9 , S );
+                    if(output) S[orderSize - 9] = 1;
+                    else S[orderSize - 9] = 0;
             }
             if (orderSize >= 20) {
                 if ( S[orderSize - 20] == -1  )                     
-                    return fillOrderDynProg( orderSize - 20 , S );
+                    output = fillOrderDynProg( orderSize - 20 , S );
+                    if(output) S[orderSize - 20] = 1;
+                    else S[orderSize - 6] = 0;
             }
+            return false;
         }
-        return false;
+        
     }
 
     /**

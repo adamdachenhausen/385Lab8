@@ -61,9 +61,17 @@ public class DynamicProgramming
      * @param startIndex only coins with indices >= startIndex may be picked
      */
     public int maxPickUpCoins( int R[], int startIndex ) {
+        
         if ( startIndex >= R.length ) return 0;
 
-        return 0;
+        //return the last possible value if its the last element or 2nd from last
+        if (startIndex == R.length -1 || startIndex == R.length -2)
+        {
+            return R[startIndex];
+        }
+        else{
+            return maxPickUpCoins(R,startIndex-2);
+        }
     }
 
     /**
@@ -85,9 +93,19 @@ public class DynamicProgramming
 
         // if the solutions array already contains the answer, 
         // just return that answer here rather than recomputing it.
+        if(S[startIndex] > 0)return S[startIndex];
 
+        int max = 0;
         // And otherwise, do the recursive work of finding the answer
+        for(int i=0; i<R.length;i++)
+        {
+            int temp = maxPickUpCoinsDynProg(R,startIndex,S);
+            
+            
+            
+        }
 
+        
         return 0;
     }
 

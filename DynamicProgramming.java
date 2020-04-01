@@ -27,27 +27,26 @@ public class DynamicProgramming
         }
         else{
             // And otherwise, do the recursive work of finding the answer below
-            if (orderSize >= 6) { 
-                if ( S[orderSize - 6] == -1 )
-                    output = fillOrderDynProg( orderSize - 6 , S );
-                    if(output) S[orderSize - 6] = 1;
-                    else S[orderSize - 6] = 0;
+            if (orderSize >= 6) {
+                output = fillOrderDynProg( orderSize -6, S );
+                if(output)
+                {S[orderSize] = 1;
+                    return true;}
             }
             if (orderSize >= 9) {
-                if ( S[orderSize - 9] == -1  ) 
-                    output = fillOrderDynProg( orderSize - 9 , S );
-                    if(output) S[orderSize - 9] = 1;
-                    else S[orderSize - 9] = 0;
+                output = fillOrderDynProg( orderSize -9, S );
+                if(output){S[orderSize] = 1;
+                    return true;}
             }
-            if (orderSize >= 20) {
-                if ( S[orderSize - 20] == -1  )                     
-                    output = fillOrderDynProg( orderSize - 20 , S );
-                    if(output) S[orderSize - 20] = 1;
-                    else S[orderSize - 6] = 0;
+            if (orderSize >= 20) {           
+                output = fillOrderDynProg( orderSize -20, S );
+                if(output){S[orderSize] = 1;
+                    return true;}
             }
+            S[orderSize] = 0;
             return false;
         }
-        
+
     }
 
     /**
